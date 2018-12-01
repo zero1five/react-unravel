@@ -1,5 +1,8 @@
-const { exec } = require('child_process')
+const { execSync } = require('child_process')
 const readLine = require('readline')
+
+const compose = (...funcs) =>
+	funcs.reduce((a, b) => (...args) => a(b(...args)), arg => arg)
 
 const readSyncByRl = (tips = '>>> ') => new Promise(res => {
 	const rl = readLine.createInterface({ 
@@ -13,8 +16,17 @@ const readSyncByRl = (tips = '>>> ') => new Promise(res => {
 	})
 })
 
+const visitSets = cmd => {
+	const visitors = {
+		tree: "tree -I 'README.md|shell.js|scripts'",
+		push: "node ./scripts/push"
+	}
+
+	return visitors[cmd]
+}
+
 const inquriy = async () => {
-  const cmd = await readSyncByRl('Please enter a command (e.g: Tree) ： \n')
+  const cmd = await readSyncByRl('Please enter a command (e.g: tree | push) ： \n')
 	
   return { cmd }
 }
@@ -22,17 +34,15 @@ const inquriy = async () => {
 /**
  * run command
  */
-const runCmd = async cmd => {
-  cmd.map(x => execSync(x, { stdio: 'inherit' }))
-}
+const runCmd = async cmd => execSync(cmd, { stdio: 'inherit' })
 
 
 const App = async () => {
 	const { cmd } = await inquriy()
-	
-	const result = await cmd
-		|> visitSets
-		|> runCmd
+	 
+	const result = await compose(
+		runCmd, visitSets
+	)(cmd)
 
 	return result
 }
