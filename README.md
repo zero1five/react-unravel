@@ -6,9 +6,14 @@
 ```
 
 .
-└── create-subscription
+├── create-subscription
+│   ├── index.js 
+│   └── src
+│       └── createSubscription.js
+└── react-dom
     ├── index.js
     └── src
-        └── createSubscription.js
+        └── client
+            └── ReactDOM.js
 
 ```
