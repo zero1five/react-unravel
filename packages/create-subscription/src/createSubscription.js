@@ -1,3 +1,9 @@
+/**
+ * createSubscription
+ * 主要是创建一个能主动触发子组件渲染的父级组件
+ * 通过subscribe重新setState => render
+ */
+
 import React from 'react';
 import invariant from 'shared/invariant';
 import warningWithoutStack from 'shared/warningWithoutStack';
@@ -107,15 +113,10 @@ export function createSubscription < Property, Value > (
           });
         };
 
-        // Store the unsubscribe method for later (in case the subscribable prop changes).
         const unsubscribe = subscribe(source, callback);
 
-        // It's safe to store unsubscribe on the instance because
-        // We only read or write that property during the "commit" phase.
         this._unsubscribe = unsubscribe;
 
-        // External values could change between render and mount,
-        // In some cases it may be important to handle this case.
         const value = getCurrentValue(this.props.source);
         if (value !== this.state.value) {
           this.setState({

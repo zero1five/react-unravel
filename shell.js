@@ -20,7 +20,8 @@ const readSyncByRl = (tips = '>>> ') => new Promise(res => {
 
 const visitSets = cmd => {
   const visitors = {
-    tree: "tree -I 'README.md|shell.js|scripts'",
+    // tree: "tree -I 'README.md|shell.js|scripts'",
+    tree: "tree -l 'packages'",
     push: "node ./scripts/push"
   }
 

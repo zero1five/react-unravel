@@ -5,15 +5,17 @@
 
 ```
 
-.
+packages
 ├── create-subscription
-│   ├── index.js 
+│   ├── index.js
 │   └── src
 │       └── createSubscription.js
-└── react-dom
-    ├── index.js
-    └── src
-        └── client
-            └── ReactDOM.js
+├── react-dom
+│   ├── index.js
+│   └── src
+│       └── client
+│           └── ReactDOM.js
+└── shared
+    └── ReactSharedInternals.js
 
 ```
