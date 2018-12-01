@@ -3,5 +3,12 @@
 
 ## Plan
 
+```
+
+.
 └── create-subscription
-  └── index.js
+    ├── index.js
+    └── src
+        └── createSubscription.js
+
+```
