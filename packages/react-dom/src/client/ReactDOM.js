@@ -458,9 +458,6 @@ const ReactDOM: Object = {
     if ((componentOrElement: any).nodeType === ELEMENT_NODE) {
       return (componentOrElement: any);
     }
-    if (__DEV__) {
-      return findHostInstanceWithWarning(componentOrElement, 'findDOMNode');
-    }
     return findHostInstance(componentOrElement);
   },
 
@@ -558,9 +555,6 @@ const ReactDOM: Object = {
   },
 };
 
-type RootOptions = {
-  hydrate ? : boolean,
-};
 
 function createRoot(container: DOMContainer, options ? : RootOptions): ReactRoot {
   const functionName = enableStableConcurrentModeAPIs ?
