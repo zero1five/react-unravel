@@ -560,11 +560,7 @@ function createRoot(container: DOMContainer, options ? : RootOptions): ReactRoot
   const functionName = enableStableConcurrentModeAPIs ?
     'createRoot' :
     'unstable_createRoot';
-  invariant(
-    isValidContainer(container),
-    '%s(...): Target container is not a DOM element.',
-    functionName,
-  );
+
   const hydrate = options != null && options.hydrate === true;
   return new ReactRoot(container, true, hydrate);
 }
