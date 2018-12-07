@@ -109,7 +109,8 @@ ReactBatch.prototype.render = function (children: ReactNodeList) {
   const internalRoot = this._root._internalRoot;
   const expirationTime = this._expirationTime;
   const work = new ReactWork();
-
+  
+  // 在设置的时间内触发更新
   updateContainerAtExpirationTime(
     children,
     internalRoot,
@@ -121,6 +122,7 @@ ReactBatch.prototype.render = function (children: ReactNodeList) {
   return work
 }
 
+// 批更新结束以后触发的then
 ReactBatch.prototype.then = function (onComplete: () => mixed) {
   if (this._didComplete) {
     onComplete();
