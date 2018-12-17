@@ -1,4 +1,6 @@
-const { execSync } = require('child_process')
+const {
+  execSync
+} = require('child_process')
 const readLine = require('readline')
 
 const compose = (...funcs) =>
@@ -46,7 +48,9 @@ const runCmd = async cmd =>
   })
 
 const App = async () => {
-  const { cmd } = await inquriy()
+  const {
+    cmd
+  } = await inquriy()
 
   const result = await compose(
     runCmd,
@@ -57,3 +61,6 @@ const App = async () => {
 }
 
 App()
+  .catch(e => {
+    throw e
+  })
