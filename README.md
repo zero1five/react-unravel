@@ -22,4 +22,4 @@ packages
 
 ## Article
 
-- [this.setState发生了什么？](https://github.com/zero1five/react-unravel/article/article_1.md)
+- [this.setState发生了什么？](https://github.com/zero1five/react-unravel/blob/master/article/article_1.md)
